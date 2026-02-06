@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICSE Board Exam 2026 - Your Personalized Prep Plan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            min-height: 100vh;
+            padding: 20px;
+            transition: background 0.5s ease, color 0.5s ease;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Dark Mode Styles - Google Dark Theme Colors */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #e8eaed;
+        }
+        
+        .header {
+            background: white;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        .dark-mode .header {
+            background: #292929;
+            color: #e8eaed;
+        }
+        
+        .dark-mode .header h1 {
+            color: #e8eaed;
+        }
+        
+        .tab-content {
+            background: white;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        
+        .dark-mode .tab-content {
+            background: #292929;
+            color: #e8eaed;
+        }
+        
+        .subject-card {
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        
+        .dark-mode .subject-card {
+            background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%) !important;
+            color: #e8eaed;
+        }
+        
+        .dark-mode .subject-name,
+        .dark-mode .strategy-list,
+        .dark-mode .strategy-list li {
+            color: #e8eaed !important;
+        }
+        
+        .tab {
+            transition: all 0.3s ease;
+        }
+        
+        .dark-mode .tab {
+            background: #3a3a3a;
+            color: #e8eaed;
+        }
+        
+        .dark-mode .tab:hover {
+            background: #4a4a4a;
+            transform: translateY(-2px);
+        }
+        
+        .exam-date {
+            transition: transform 0.2s ease;
+        }
+        
+        .exam-date:hover {
+            transform: scale(1.05);
+        }
+        
+        .dark-mode .exam-date {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        }
+        
+        .daily-plan {
+            transition: background 0.3s ease;
+        }
+        
+        .dark-mode .daily-plan {
+            background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%) !important;
+        }
+        
+        .time-slot {
+            transition: all 0.2s ease;
+        }
+        
+        .time-slot:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+        }
+        
+        .dark-mode .time-slot {
+            background: #1f1f1f !important;
+            color: #e8eaed;
+        }
+        
+        .study-tips {
+            transition: background 0.3s ease;
+        }
+        
+        .dark-mode .study-tips {
+            background: #3a3a3a !important;
+            color: #e8eaed !important;
+        }
+        
+        .dark-mode .study-tips h3,
+        .dark-mode .study-tips h4,
+        .dark-mode .study-tips p,
+        .dark-mode .study-tips li {
+            color: #e8eaed !important;
+        }
+        
+        .dark-mode input,
+        .dark-mode select {
+            background: #3a3a3a !important;
+            color: #e8eaed !important;
+            border-color: #ff6b6b !important;
+        }
+        
+        .dark-mode input::placeholder {
+            color: #999 !important;
+        }
+        
+        .dark-mode h2 {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dark-mode h3,
+        .dark-mode h4 {
+            color: #ff6b6b;
+        }
+        
+        /* Dark mode button */
+        .mode-toggle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .mode-toggle:hover {
+            transform: scale(1.1) rotate(20deg);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+        
+        .mode-toggle:active {
+            transform: scale(0.95);
+        }
+        
+        /* Circle animation overlay */
+        .circle-transition {
+            position: fixed;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Todo/Study Tracker item animations */
+        .todo-item {
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .dark-mode .todo-item {
+            background: #3a3a3a !important;
+            border-color: #ff6b6b !important;
+        }
+        
+        .dark-mode .todo-item.completed {
+            background: #2d2d2d !important;
+            border-color: #4caf50 !important;
+        }
+        
+        .dark-mode .todo-item span {
+            color: #e8eaed !important;
+        }
+        
+        /* Button animations */
+        button {
+            transition: all 0.2s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        /* Checkbox animation */
+        input[type="checkbox"] {
+            transition: all 0.2s ease;
+        }
+        
+        input[type="checkbox"]:checked {
+            animation: checkPop 0.3s ease;
+        }
+        
+        @keyframes checkPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Card hover effects */
+        .subject-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.2);
+        }
+        
+        /* Progress bar animation */
+        .progress-fill {
+            animation: fillBar 1s ease;
+        }
+        
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+        
+        /* Tab switching animation */
+        .tab-content.active {
+            animation: fadeInUp 0.4s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Motivation box pulse */
+        .motivation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(255, 107, 107, 0);
+            }
+        }
+        
+        /* Dashboard card - always keeps gradient */
+        .dashboard-card {
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            box-shadow: 0 6px 25px rgba(255, 107, 107, 0.4) !important;
+        }
+        
+        /* Item input/select containers in dark mode */
+        .dark-mode .input-container {
+            background: #292929 !important;
+        }
+        
+        .dark-mode .input-container h3 {
+            color: #ff6b6b !important;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .countdown {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 48px;
+            font-weight: bold;
+            display: block;
+            margin: 10px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            flex: 1;
+            min-width: 150px;
+            padding: 15px;
+            background: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tab.active {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .subject-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 15px;
+            border-left: 5px solid;
+        }
+        
+        .priority-high { border-left-color: #e74c3c; }
+        .priority-medium { border-left-color: #f39c12; }
+        .priority-low { border-left-color: #27ae60; }
+        
+        .subject-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .subject-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .score-badge {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .score-high { background: #27ae60; }
+        .score-medium { background: #f39c12; }
+        .score-low { background: #e74c3c; }
+        
+        .progress-bar {
+            background: #ecf0f1;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b 0%, #ee5a6f 100%);
+            transition: width 0.5s;
+        }
+        
+        .exam-schedule {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .exam-date {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .date {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .study-tips {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .checklist {
+            list-style: none;
+        }
+        
+        .checklist li {
+            padding: 12px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .checklist li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .checklist input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .daily-plan {
+            background: linear-gradient(135deg, #ffcccc 0%, #ffb3b3 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+        
+        .time-slot {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .motivation {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa07a 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin: 15px 0 10px 0;
+        }
+        
+        .strategy-list {
+            list-style-position: inside;
+            line-height: 1.8;
+        }
+        
+        .strategy-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h1 style="flex: 1; text-align: center;">🎯 ICSE Board Exams 2026 - Your Success Plan</h1>
+                <button onclick="toggleDarkMode()" class="mode-toggle" id="modeToggle">
+                    🌙
+                </button>
+            </div>
+            <div class="countdown">
+                <div>⚡ CRUNCH TIME! First Exam In:</div>
+                <span class="countdown-number" id="countdown">11 DAYS</span>
+                <div>February 17, 2026 | English Language Paper 1 @ 11:00 AM</div>
+            </div>
+            <p style="margin-top: 15px; font-size: 18px;">Target: <strong>80%+</strong> | School Aggregate: <strong>65%</strong></p>
+            <p style="margin-top: 10px; font-size: 16px; color: #27ae60;"><strong>🎯 Practice Tests: Physics & Geo = 85-90% | Eng Lit = 71-75% | Math Section A ✓</strong></p>
+            <p style="margin-top: 5px; font-size: 14px; color: #e74c3c;"><strong>⚡ Today is Feb 6 - 10 FULL DAYS LEFT TO PREPARE!</strong></p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('priority')">📊 Priority Subjects</button>
+            <button class="tab" onclick="showTab('schedule')">📅 Exam Schedule</button>
+            <button class="tab" onclick="showTab('daily')">⏰ Daily Plan</button>
+            <button class="tab" onclick="showTab('todo')">✅ My To-Do</button>
+            <button class="tab" onclick="showTab('tips')">💡 Exam Tips</button>
+            <button class="tab" onclick="showTab('checklist')">📋 Final Checklist</button>
+        </div>
+
+        <div id="priority" class="tab-content active">
+            <h2>Your Focus Areas - Next 13 Days</h2>
+            
+            <div class="motivation">
+                🚀 UPDATED REALITY CHECK: Your practice tests show you can score 85-90% in Physics & Geography! You're WAY better than your school scores suggest. Apply the same focus to other subjects and 80%+ is totally within reach! 💪
+            </div>
+
+            <div class="study-tips" style="background: #d4edda; border-left-color: #28a745; margin-bottom: 20px;">
+                <h3>🎯 KEY INSIGHT from Your Practice Tests</h3>
+                <p style="margin-top: 10px;"><strong>Physics & Geography: 68-72/80 (85-90%)</strong></p>
+                <p style="margin-top: 10px;">This PROVES:</p>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li>✅ Your school scores (32-55%) don't reflect your TRUE capability</li>
+                    <li>✅ When you practice with past papers, you can achieve 85-90%</li>
+                    <li>✅ The 2024 papers are valid - CISCE made NO major changes for 2026</li>
+                    <li>✅ You just need consistent practice in ALL subjects like you did for these two</li>
+                    <li>✅ Your 80%+ target is not just possible - it's LIKELY if you replicate this effort!</li>
+                </ul>
+            </div>
+
+            <h3>🔴 HIGH PRIORITY (Need Maximum Improvement)</h3>
+            
+            <div class="subject-card priority-high">
+                <div class="subject-header">
+                    <span class="subject-name">📐 Mathematics</span>
+                    <span class="score-badge score-low">40% → Target: 75%+</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%"></div>
+                </div>
+                <strong>Exam Date: March 2, 2026</strong>
+                <p style="margin-top: 10px;"><strong>📊 Latest Practice: 2025 paper Section A completed ✓</strong></p>
+                <p style="margin-top: 5px;"><em>Making progress! Next step: Complete FULL papers (Sections A + B)</em></p>
+                <p style="margin-top: 10px;"><strong>Aggressive Action Plan (11 days left!):</strong></p>
+                <ul class="strategy-list">
+                    <li><strong>CRITICAL:</strong> Complete 4-5 FULL papers (not just Section A) before exam</li>
+                    <li>Daily practice: 2 hours of math problems (morning - fresh mind!)</li>
+                    <li>Focus on high-scoring topics: Algebra, Geometry, Statistics</li>
+                    <li>Master formula sheet - create ONE handwritten reference</li>
+                    <li>Section B practice is ESSENTIAL - don't skip it!</li>
+                    <li>Solve under timed conditions (2 hours max)</li>
+                    <li>Review mistakes immediately after each paper</li>
+                </ul>
+            </div>
+
+            <div class="subject-card priority-medium">
+                <div class="subject-header">
+                    <span class="subject-name">🗺️ Geography</span>
+                    <span class="score-badge score-high">Practice: 85-90% 🎯 → Target: 90%+</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 87%"></div>
+                </div>
+                <strong>Exam Date: March 18, 2026</strong>
+                <p style="margin-top: 10px;"><strong>🌟 GREAT PROGRESS! Your 2024 practice paper: 68-72/80</strong></p>
+                <p style="margin-top: 5px;"><em>This proves you can excel! School scores don't reflect your true potential.</em></p>
+                <p style="margin-top: 10px;"><strong>Maintenance & Perfection Plan:</strong></p>
+                <ul class="strategy-list">
+                    <li>Continue map work practice - this is your strength!</li>
+                    <li>Solve 2-3 more recent papers to maintain momentum</li>
+                    <li>Focus on speed - you have the knowledge, now optimize timing</li>
+                    <li>Review minor CISCE 2026 additions (environmental topics)</li>
+                    <li>Keep practicing diagrams for full marks</li>
+                </ul>
+            </div>
+
+            <div class="subject-card priority-medium">
+                <div class="subject-header">
+                    <span class="subject-name">⚡ Physics</span>
+                    <span class="score-badge score-high">Practice: 85-90% 🎯 → Target: 90%+</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 87%"></div>
+                </div>
+                <strong>Exam Date: March 9, 2026</strong>
+                <p style="margin-top: 10px;"><strong>🌟 EXCELLENT! Your 2024 practice paper: 68-72/80</strong></p>
+                <p style="margin-top: 5px;"><em>Huge jump from 32% school score! You've proven you can ace this.</em></p>
+                <p style="margin-top: 10px;"><strong>Maintenance & Perfection Plan:</strong></p>
+                <ul class="strategy-list">
+                    <li>Practice 2-3 more papers to maintain consistency</li>
+                    <li>Focus on numerical accuracy and diagram precision</li>
+                    <li>Review formula applications in different contexts</li>
+                    <li>Time yourself to improve speed further</li>
+                    <li>Keep your ray diagrams and circuit diagrams sharp</li>
+                </ul>
+            </div>
+
+            <div class="subject-card priority-high">
+                <div class="subject-header">
+                    <span class="subject-name">🧪 Chemistry</span>
+                    <span class="score-badge score-low">43% → Target: 75%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 43%"></div>
+                </div>
+                <strong>Exam Date: March 11, 2026</strong>
+                <p style="margin-top: 10px;"><strong>Action Plan:</strong></p>
+                <ul class="strategy-list">
+                    <li>Chemical equations practice - 30 mins daily (scoring!)</li>
+                    <li>Periodic table trends and properties</li>
+                    <li>Important definitions and reactions</li>
+                    <li>Practice 4-5 previous year papers</li>
+                    <li>Focus on inorganic chemistry (often easier to score)</li>
+                </ul>
+            </div>
+
+            <div class="subject-card priority-high">
+                <div class="subject-header">
+                    <span class="subject-name">🔬 Biology</span>
+                    <span class="score-badge score-medium">55% → Target: 80%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 55%"></div>
+                </div>
+                <strong>Exam Date: March 13, 2026</strong>
+                <p style="margin-top: 10px;"><strong>Action Plan:</strong></p>
+                <ul class="strategy-list">
+                    <li>Diagrams are 10-12 marks! Practice 5-7 key diagrams daily</li>
+                    <li>Definitions must be exact - create a definition bank</li>
+                    <li>Life processes, human body systems - high weightage</li>
+                    <li>Practice past papers with focus on diagram accuracy</li>
+                    <li>Terminology is important - learn spellings correctly</li>
+                </ul>
+            </div>
+
+            <div class="subject-card priority-high">
+                <div class="subject-header">
+                    <span class="subject-name">📜 History & Civics</span>
+                    <span class="score-badge score-low">48% → Target: 75%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 48%"></div>
+                </div>
+                <strong>Exam Date: March 16, 2026 (SECOND LAST EXAM!)</strong>
+                <p style="margin-top: 10px;"><strong>Action Plan:</strong></p>
+                <ul class="strategy-list">
+                    <li>History: Focus on key events, dates, personalities</li>
+                    <li>Civics: Constitution, fundamental rights, government structure</li>
+                    <li>Make timeline charts for important events</li>
+                    <li>Practice short answers (2-3 markers are scoring!)</li>
+                    <li>Revise from concise notes, not full textbook</li>
+                    <li>Good news: You have more time to prepare for this!</li>
+                </ul>
+            </div>
+
+            <h3 style="margin-top: 30px;">🟡 MEDIUM PRIORITY (Strong Performance - Maintain & Perfect)</h3>
+
+            <div class="subject-card priority-medium">
+                <div class="subject-header">
+                    <span class="subject-name">📚 English Language</span>
+                    <span class="score-badge score-medium">65% → Target: 80%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%"></div>
+                </div>
+                <strong>Exam Date: February 17, 2026 (FIRST EXAM!)</strong>
+                <p style="margin-top: 10px;"><strong>Action Plan:</strong></p>
+                <ul class="strategy-list">
+                    <li>Practice essays, letters, notices daily</li>
+                    <li>Focus on grammar and comprehension</li>
+                    <li>Read sample answers for format and structure</li>
+                    <li>Build vocabulary list for essays</li>
+                    <li>This is your first exam - start strong!</li>
+                </ul>
+            </div>
+
+            <div class="subject-card priority-medium">
+                <div class="subject-header">
+                    <span class="subject-name">📖 Literature in English</span>
+                    <span class="score-badge score-medium">Practice: 57-60% → Target: 75%+</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%"></div>
+                </div>
+                <strong>Exam Date: February 20, 2026 (3rd exam - only 14 days away!)</strong>
+                <p style="margin-top: 10px;"><strong>Recent Practice: 2025 paper Section A = 57-60%</strong></p>
+                <p style="margin-top: 5px;"><em>First attempt after PB2 - good baseline! Easily improvable to 75%+</em></p>
+                <p style="margin-top: 10px;"><strong>Intensive Action Plan:</strong></p>
+                <ul class="strategy-list">
+                    <li><strong>URGENT:</strong> Complete full papers (both sections), not just Section A</li>
+                    <li>Practice 4-5 complete past papers (2020-2024) before exam</li>
+                    <li>Revise all poems, prose, and drama summaries thoroughly</li>
+                    <li>Practice character sketches and themes with sample answers</li>
+                    <li>Memorize important quotes with context for quick reference</li>
+                    <li>Time yourself - practice under exam conditions (2 hours)</li>
+                    <li>Focus on answer structure and presentation for max marks</li>
+                </ul>
+            </div>
+
+            <h3 style="margin-top: 30px;">🟢 STRONG SUBJECTS (Maintain Excellence)</h3>
+
+            <div class="subject-card priority-low">
+                <div class="subject-header">
+                    <span class="subject-name">🕉️ Hindi</span>
+                    <span class="score-badge score-high">63% → Target: 80%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 63%"></div>
+                </div>
+                <strong>Exam Date: February 26, 2026</strong>
+                <p style="margin-top: 10px;"><strong>Maintenance Plan:</strong> Regular revision, grammar practice, essay writing</p>
+            </div>
+
+            <div class="subject-card priority-low">
+                <div class="subject-header">
+                    <span class="subject-name">🎨 Art</span>
+                    <span class="score-badge score-high">88% → Keep it up!</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 88%"></div>
+                </div>
+                <strong>Exam Dates: Paper 1 (Feb 21, 9-12 PM) & Paper 3 (Feb 28, 9-12 PM)</strong>
+                <p style="margin-top: 10px;"><strong>Maintenance Plan:</strong> Continue regular practice, this is your strength! Note the 3-hour exam duration.</p>
+            </div>
+        </div>
+
+        <div id="schedule" class="tab-content">
+            <h2>📅 Complete Exam Schedule - ICSE 2026</h2>
+            
+            <div class="study-tips">
+                <strong>⚠️ Important:</strong> Arrive 30 minutes before exam time. Reading time: 15 minutes before start.
+            </div>
+
+            <div class="exam-schedule">
+                <div class="exam-date">
+                    <div class="date">Feb 17</div>
+                    <div>Tuesday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">English Language (Paper 1)</div>
+                    <div>11:00 AM - 1:00 PM</div>
+                </div>
+                
+                <div class="exam-date">
+                    <div class="date">Feb 20</div>
+                    <div>Friday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">Literature in English (Paper 2)</div>
+                    <div>11:00 AM - 1:00 PM</div>
+                </div>
+                
+                <div class="exam-date">
+                    <div class="date">Feb 21</div>
+                    <div>Saturday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">Art/Paper 1: Drawing from Still Life</div>
+                    <div>9:00 AM - 12:00 PM</div>
+                </div>
+                
+                <div class="exam-date">
+                    <div class="date">Feb 26</div>
+                    <div>Thursday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">Hindi (Second Language)</div>
+                    <div>11:00 AM - 1:00 PM</div>
+                </div>
+                
+                <div class="exam-date">
+                    <div class="date">Feb 28</div>
+                    <div>Saturday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">Art/Paper 3: Original Imaginative Composition in Colour</div>
+                    <div>9:00 AM - 12:00 PM</div>
+                </div>
+                
+                <div class="exam-date">
+                    <div class="date">Mar 02</div>
+                    <div>Monday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">Mathematics</div>
+                    <div>11:00 AM - 1:00 PM</div>
+                </div>
+                
+                <div class="exam-date">
+                    <div class="date">Mar 09</div>
+                    <div>Monday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">Physics (Science Paper 1)</div>
+                    <div>11:00 AM - 1:00 PM</div>
+                </div>
+                
+                <div class="exam-date">
+                    <div class="date">Mar 11</div>
+                    <div>Wednesday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">Chemistry (Science Paper 2)</div>
+                    <div>11:00 AM - 1:00 PM</div>
+                </div>
+                
+                <div class="exam-date">
+                    <div class="date">Mar 13</div>
+                    <div>Friday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">Biology (Science Paper 3)</div>
+                    <div>11:00 AM - 1:00 PM</div>
+                </div>
+                
+                <div class="exam-date">
+                    <div class="date">Mar 16</div>
+                    <div>Monday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">History & Civics (H.C.G. - Paper 1)</div>
+                    <div>11:00 AM - 1:00 PM</div>
+                </div>
+                
+                <div class="exam-date">
+                    <div class="date">Mar 18</div>
+                    <div>Wednesday</div>
+                    <div style="margin-top: 10px; font-size: 18px;">Geography (H.C.G. - Paper 2)</div>
+                    <div>11:00 AM - 1:00 PM</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="daily" class="tab-content">
+            <h2>⏰ INTENSIVE Study Plan (10 FULL Days Left!)</h2>
+            
+            <div class="study-tips" style="background: #d4edda; border-left-color: #28a745;">
+                <h3>🔥 YOUR NEXT 3 DAYS - SPECIFIC ACTION PLAN</h3>
+                <p style="margin-top: 10px;"><strong>Based on your current progress (as of Feb 6):</strong></p>
+                
+                <h4 style="margin-top: 15px; color: #28a745;">✅ What You've Done So Far:</h4>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Physics 2024: 68-72/80 (85-90%) ✓</li>
+                    <li>Geography 2024: 68-72/80 (85-90%) ✓</li>
+                    <li>Eng Lit 2025: 57-60/80 (71-75%) - first attempt ✓</li>
+                    <li>Math 2025 Section A only ✓</li>
+                </ul>
+                
+                <h4 style="margin-top: 15px; color: #e74c3c;">🎯 TODAY (Feb 6) - DO THIS NOW:</h4>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li><strong>Right Now (2 hrs):</strong> Complete FULL Math 2024 paper (Sections A + B)</li>
+                    <li><strong>After lunch (2 hrs):</strong> English Language 2024 paper (THIS IS YOUR FIRST EXAM!)</li>
+                    <li><strong>Evening (1.5 hrs):</strong> Chemistry 2024 - complete it, even if you're guessing</li>
+                    <li><strong>Night (30 mins):</strong> Quick review of all 3 papers, note what you struggled with</li>
+                    <li><strong>Target:</strong> 3 complete papers today = 10% of all prep done!</li>
+                </ul>
+                
+                <h4 style="margin-top: 15px; color: #f39c12;">📅 TOMORROW (Feb 7):</h4>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li><strong>Morning:</strong> English Lit 2024 (second attempt - aim for 70%+)</li>
+                    <li><strong>Afternoon:</strong> History 2024 full paper (first attempt - just try it!)</li>
+                    <li><strong>Evening:</strong> Biology 2024 full paper</li>
+                    <li><strong>Target:</strong> 3 more papers = Total 6 papers in 2 days</li>
+                </ul>
+                
+                <h4 style="margin-top: 15px; color: #3498db;">📅 DAY AFTER (Feb 8):</h4>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li><strong>Morning:</strong> Math 2023 full paper (second attempt - compare with 2024)</li>
+                    <li><strong>Afternoon:</strong> Hindi 2024 full paper</li>
+                    <li><strong>Evening:</strong> English Language 2023 (practice for Feb 17 exam!)</li>
+                    <li><strong>Target:</strong> 3 more = Total 9 papers in 3 days!</li>
+                </ul>
+                
+                <p style="margin-top: 15px; font-weight: bold; color: #e74c3c;">🔥 By Feb 8 evening, you'll have covered EVERY major subject at least once! This builds confidence + identifies exact weak areas.</p>
+                <p style="margin-top: 10px;"><strong>After Feb 8:</strong> Repeat cycle with 2023, 2022, 2021 papers + focus heavily on weak topics.</p>
+            </div>
+            
+            <div class="study-tips">
+                <strong>💪 Reality Check:</strong> 10 days left = You need 3 papers per day MINIMUM to cover all subjects adequately. That's 30 papers total. You've done ~3.5 so far. Let's accelerate!
+            </div>
+
+            <div class="study-tips" style="background: #fff3cd; border-left-color: #ffc107; margin-top: 15px;">
+                <h3>🎯 Daily Paper Target (Feb 6-16)</h3>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li><strong>Minimum:</strong> 2 complete papers per day (different subjects)</li>
+                    <li><strong>Ideal:</strong> 3 papers per day (mix of strong + weak subjects)</li>
+                    <li><strong>Method:</strong> Do paper → Check answers → Review mistakes → Move on</li>
+                    <li><strong>Priority order:</strong> English Lang (Feb 17!) → Eng Lit → Math → Sciences → History/Geo</li>
+                    <li><strong>Days 1-3 (Feb 6-8):</strong> Cover ALL subjects once</li>
+                    <li><strong>Days 4-7 (Feb 9-12):</strong> Repeat weak subjects 2-3 times</li>
+                    <li><strong>Days 8-10 (Feb 13-15):</strong> Final revision + specimen papers</li>
+                    <li><strong>Day 11 (Feb 16):</strong> Light revision only, early sleep!</li>
+                </ul>
+            </div>
+
+            <div class="daily-plan">
+                <h3>📖 UPDATED Weekday Schedule (More Realistic)</h3>
+                <div class="time-slot">
+                    <span><strong>6:00 - 8:00 AM</strong></span>
+                    <span>Paper 1: First subject (2 hours - complete paper)</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>8:00 - 9:00 AM</strong></span>
+                    <span>Quick review + check answers for Paper 1</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>9:00 - 10:00 AM</strong></span>
+                    <span>Break/Breakfast/Refresh</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>10:00 AM - 12:00 PM</strong></span>
+                    <span>Paper 2: Different subject (2 hours)</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>12:00 - 1:00 PM</strong></span>
+                    <span>Review Paper 2 + Note weak areas</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>1:00 - 2:00 PM</strong></span>
+                    <span>Lunch + Rest</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>2:00 - 4:00 PM</strong></span>
+                    <span>Paper 3: Quick subject OR revision of weak topics</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>4:00 - 5:00 PM</strong></span>
+                    <span>Review + Break</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>5:00 - 7:00 PM</strong></span>
+                    <span>Target practice: Weak chapters/topics from today's papers</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>7:00 - 8:00 PM</strong></span>
+                    <span>Dinner + Family time</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>8:00 - 9:30 PM</strong></span>
+                    <span>Light revision: Notes, formulas, diagrams</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>9:30 - 10:00 PM</strong></span>
+                    <span>Relax/Light reading</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>10:00 PM</strong></span>
+                    <span>Sleep (Non-negotiable!)</span>
+                </div>
+            </div>
+
+            <div class="daily-plan" style="margin-top: 20px;">
+                <h3>📅 Weekend POWER Study (2-3 papers minimum)</h3>
+                <div class="time-slot">
+                    <span><strong>7:00 - 9:00 AM</strong></span>
+                    <span>Paper 1: Full mock test (2 hours, exam conditions)</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>9:00 - 10:00 AM</strong></span>
+                    <span>Check answers + Error analysis</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>10:00 - 11:00 AM</strong></span>
+                    <span>Break</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>11:00 AM - 1:00 PM</strong></span>
+                    <span>Paper 2: Different subject</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>1:00 - 2:00 PM</strong></span>
+                    <span>Lunch + Review Paper 2</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>2:00 - 4:00 PM</strong></span>
+                    <span>Paper 3 OR intensive weak topic practice</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>4:00 - 5:00 PM</strong></span>
+                    <span>Break</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>5:00 - 7:00 PM</strong></span>
+                    <span>Diagram practice/Formula revision/Map work</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>7:00 - 8:00 PM</strong></span>
+                    <span>Dinner</span>
+                </div>
+                <div class="time-slot">
+                    <span><strong>8:00 - 9:30 PM</strong></span>
+                    <span>Consolidation: Make short notes from today's learnings</span>
+                </div>
+            </div>
+
+            <div class="study-tips" style="margin-top: 20px; background: #f8d7da; border-left-color: #dc3545;">
+                <strong>⚠️ ANTI-PROCRASTINATION RULES (Based on your feedback!):</strong>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li><strong>NO searching answers mid-paper!</strong> Write what you know, mark "don't know", move on</li>
+                    <li><strong>Phone in another room</strong> during paper time - no exceptions</li>
+                    <li><strong>Close all browser tabs</strong> except the question paper PDF</li>
+                    <li><strong>2-hour max per subject</strong> - when timer rings, STOP and switch</li>
+                    <li><strong>Do COMPLETE papers</strong> - both sections, even if you don't know everything</li>
+                    <li><strong>"Ugly first draft" approach</strong> - finish > perfection</li>
+                    <li><strong>Different room for difficult subjects</strong> - fresh environment = fresh mindset</li>
+                    <li><strong>Feelings don't matter</strong> - start anyway, even if you don't feel like it</li>
+                    <li><strong>It's NOT too late!</strong> 11 days = 22-30 papers total = MORE than enough</li>
+                </ul>
+            </div>
+
+            <div class="study-tips" style="margin-top: 20px; background: #d4edda; border-left-color: #28a745;">
+                <strong>🎯 Paper Completion Tracker (Aim for 25-30 total papers):</strong>
+                <p style="margin-top: 10px;">✅ Physics: 68-72/80 (2024 paper) - DONE</p>
+                <p>✅ Geography: 68-72/80 (2024 paper) - DONE</p>
+                <p>✅ English Literature: 57-60% (2025 Section A) - Need full paper practice!</p>
+                <p style="margin-top: 10px;"><strong>Remaining papers needed per subject:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 5px;">
+                    <li>English Lit: 4-5 complete papers</li>
+                    <li>Mathematics: 5-6 papers (most important!)</li>
+                    <li>Chemistry: 4-5 papers</li>
+                    <li>Biology: 4-5 papers</li>
+                    <li>History: 3-4 papers</li>
+                    <li>English Language: 3 papers</li>
+                    <li>Hindi: 2-3 papers</li>
+                    <li>Physics: 2-3 more papers (you're already good!)</li>
+                    <li>Geography: 2-3 more papers (you're already good!)</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Total needed: ~28-30 papers in 11 days = 2.5-3 papers/day</strong></p>
+            </div>
+        </div>
+
+        <div id="todo" class="tab-content">
+            <h2>✅ My Study Tracker & To-Do List</h2>
+            
+            <div class="study-tips" style="background: #ffe8e8; border-left-color: #ff6b6b;">
+                <h3>📝 Track Both Tasks & Practice Paper Scores!</h3>
+                <p style="margin-top: 10px;">Two types of items you can add:</p>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li>📋 <strong>Regular Tasks</strong> - e.g., "Make formula sheet" (just check off when done)</li>
+                    <li>📊 <strong>Practice Papers</strong> - e.g., "Math 2024" (add your score like 70/80)</li>
+                    <li>✅ Check off items when complete</li>
+                    <li>🗑️ Delete items you no longer need</li>
+                    <li>📈 Your scores automatically update the dashboard!</li>
+                </ul>
+            </div>
+
+            <div class="dashboard-card" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); color: white; padding: 25px; border-radius: 15px; margin: 20px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div style="text-align: center;">
+                        <h3 style="color: white; margin-bottom: 10px;">Tasks Completed</h3>
+                        <div style="font-size: 48px; font-weight: bold;" id="todoProgress">0/0</div>
+                        <div id="progressBar" style="background: rgba(255,255,255,0.3); height: 15px; border-radius: 10px; overflow: hidden; margin-top: 10px;">
+                            <div id="progressFill" style="background: #4caf50; height: 100%; width: 0%; transition: width 0.3s;"></div>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <h3 style="color: white; margin-bottom: 10px;">Papers Average</h3>
+                        <div style="font-size: 48px; font-weight: bold;" id="paperAverage">--%</div>
+                        <div style="margin-top: 10px; font-size: 14px;" id="paperCount">No papers scored yet</div>
+                        <button onclick="viewAllScores()" 
+                                style="margin-top: 15px; padding: 8px 16px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: bold; transition: all 0.2s ease;">
+                            📊 View All Scores
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container" style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: 20px 0;">
+                <h3 style="margin-bottom: 15px;">➕ Add New Item</h3>
+                
+                <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                    <select id="itemType" onchange="updateInputPlaceholder()" 
+                            style="padding: 12px; border: 2px solid #ff6b6b; border-radius: 8px; font-size: 16px;">
+                        <option value="task">📋 Regular Task</option>
+                        <option value="paper">📊 Practice Paper</option>
+                    </select>
+                </div>
+                
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <input type="text" id="newItemInput" placeholder="e.g., Make formula sheet for Math" 
+                           style="flex: 1; min-width: 200px; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;"
+                           onkeypress="if(event.key === 'Enter') addItem()">
+                    
+                    <div id="scoreInputs" style="display: none; gap: 10px;">
+                        <input type="number" id="scoreObtained" placeholder="Score" min="0" max="100"
+                               style="width: 100px; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                        <span style="display: flex; align-items: center; font-size: 20px; font-weight: bold;">/</span>
+                        <input type="number" id="scoreTotal" placeholder="Total" min="1" max="100" value="80"
+                               style="width: 100px; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px;">
+                    </div>
+                    
+                    <button onclick="addItem()" 
+                            style="padding: 12px 30px; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold;">
+                        Add Item
+                    </button>
+                </div>
+            </div>
+
+            <div class="input-container" style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <h3 style="margin-bottom: 15px;">📋 My Items</h3>
+                <ul id="todoList" style="list-style: none; padding: 0;">
+                    <!-- Items will be added here dynamically -->
+                </ul>
+                <div id="emptyState" style="text-align: center; padding: 40px; color: #999;">
+                    <div style="font-size: 48px;">📝</div>
+                    <p style="margin-top: 10px;">No items yet. Add your first item above!</p>
+                </div>
+            </div>
+
+            <div class="study-tips" style="margin-top: 20px; background: #e8f5e9; border-left-color: #4caf50;">
+                <h3>💾 Backup Your Data</h3>
+                <p style="margin-top: 10px; font-size: 14px;">Save your progress and restore it anytime - even after updates!</p>
+                <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                    <button onclick="exportData()" 
+                            style="padding: 10px 20px; background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.2s ease;">
+                        📥 Export Data
+                    </button>
+                    <button onclick="document.getElementById('importFile').click()" 
+                            style="padding: 10px 20px; background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.2s ease;">
+                        📤 Import Data
+                    </button>
+                    <button onclick="clearAllData()" 
+                            style="padding: 10px 20px; background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.2s ease;">
+                        🗑️ Clear All
+                    </button>
+                </div>
+                <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(event)">
+            </div>
+
+            <div class="study-tips" style="margin-top: 20px; background: #fff3cd; border-left-color: #ffc107;">
+                <h3>💡 Quick Add - Today's Tasks</h3>
+                <p style="margin-top: 10px; font-size: 14px;" id="quickAddDescription">Tasks automatically update based on days until exam!</p>
+                <button onclick="addTodaysTasks()" 
+                        style="margin-top: 10px; padding: 10px 20px; background: linear-gradient(135deg, #ffa726 0%, #ff9800 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.2s ease;">
+                    ➕ Add Today's Tasks (Auto-Updates Daily)
+                </button>
+            </div>
+        </div>
+
+        <div id="tips" class="tab-content">
+            <h2>💡 Proven Exam Strategies for 80%+</h2>
+            
+            <div class="study-tips" style="background: #d4edda; border-left-color: #28a745;">
+                <h3>📋 Important: CISCE 2026 Changes (or lack thereof!)</h3>
+                <p style="margin-top: 10px;"><strong>GOOD NEWS: NO major syllabus changes for ICSE 2026!</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li>✅ Full syllabus will be tested (same as 2024)</li>
+                    <li>✅ 2020-2024 past papers are 100% valid for practice</li>
+                    <li>✅ Same question patterns and marking scheme (80+20)</li>
+                    <li>✅ Your 85-90% scores on 2024 papers ARE accurate indicators!</li>
+                    <li>⚠️ Minor additions: Environmental topics in some subjects</li>
+                </ul>
+                <p style="margin-top: 10px;"><strong>Bottom line:</strong> Keep practicing with past papers - they're your best preparation tool!</p>
+            </div>
+            
+            <div class="study-tips" style="margin-top: 20px;">
+                <h3>📝 During the Exam</h3>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li><strong>First 15 minutes (Reading Time):</strong> Scan all questions, mark easy ones, plan your sequence</li>
+                    <li><strong>Start with easy questions:</strong> Build confidence, secure marks quickly</li>
+                    <li><strong>Time management:</strong> Don't spend more than allocated time per question</li>
+                    <li><strong>For descriptive answers:</strong> Make points in margin first, then write</li>
+                    <li><strong>Diagrams:</strong> Label clearly, use pencil, keep them neat</li>
+                    <li><strong>Attempt everything:</strong> Even if unsure, write something relevant</li>
+                    <li><strong>Last 10 minutes:</strong> Review, check name/roll number on every sheet</li>
+                </ul>
+            </div>
+
+            <div class="study-tips" style="background: #d1ecf1; border-left-color: #17a2b8; margin-top: 20px;">
+                <h3>📚 Subject-Specific Tips</h3>
+                
+                <h4 style="margin-top: 15px;">Mathematics</h4>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Show all steps clearly - partial marks matter!</li>
+                    <li>Underline final answers</li>
+                    <li>Start with Section A (objective/short), then attempt strongest topics</li>
+                    <li>Double-check calculations</li>
+                </ul>
+
+                <h4 style="margin-top: 15px;">Science (All three)</h4>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Diagrams = Easy marks. Practice them well!</li>
+                    <li>Definitions must be exact and complete</li>
+                    <li>Chemical equations: Balance them properly</li>
+                    <li>Physics numericals: Write formula, substitute, calculate, unit</li>
+                </ul>
+
+                <h4 style="margin-top: 15px;">English & Literature</h4>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Follow word limits strictly</li>
+                    <li>Presentation matters - neat handwriting, paragraphs, margins</li>
+                    <li>Letter/Essay: Follow format perfectly</li>
+                    <li>Literature: Use quotes from text to support answers</li>
+                </ul>
+
+                <h4 style="margin-top: 15px;">History/Geography</h4>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Write in points for better presentation</li>
+                    <li>Maps: Practice map work separately, it's scoring!</li>
+                    <li>Include dates, names, places for history</li>
+                    <li>Geography diagrams and flowcharts are important</li>
+                </ul>
+            </div>
+
+            <div class="study-tips" style="background: #f8d7da; border-left-color: #dc3545; margin-top: 20px;">
+                <h3>⚠️ Common Mistakes to Avoid</h3>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li>❌ Leaving questions blank - always attempt!</li>
+                    <li>❌ Not reading questions carefully (especially "explain" vs "list")</li>
+                    <li>❌ Illegible handwriting - affects marks</li>
+                    <li>❌ Overwriting or cutting too much</li>
+                    <li>❌ Forgetting to write question numbers</li>
+                    <li>❌ Not managing time - getting stuck on one question</li>
+                    <li>❌ Panicking if you don't know something - skip and return</li>
+                </ul>
+            </div>
+
+            <div class="study-tips" style="background: #d4edda; border-left-color: #28a745; margin-top: 20px;">
+                <h3>🌟 Bonus Score Boosters</h3>
+                <ul style="margin-left: 20px; line-height: 1.8; margin-top: 10px;">
+                    <li>✅ Underline keywords in answers</li>
+                    <li>✅ Use headings and subheadings</li>
+                    <li>✅ Number your points (looks organized)</li>
+                    <li>✅ Draw margins with ruler</li>
+                    <li>✅ Write page numbers on continuation sheets</li>
+                    <li>✅ Use diagrams/flowcharts where possible (extra marks!)</li>
+                    <li>✅ Leave proper spacing between answers</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="checklist" class="tab-content">
+            <h2>✅ Final Preparation Checklist</h2>
+            
+            <h3>📖 Study Materials (Complete by Feb 14)</h3>
+            <ul class="checklist">
+                <li><input type="checkbox"> <span>All textbooks revised at least once</span></li>
+                <li><input type="checkbox"> <span>Completed 5 previous years' papers for each subject</span></li>
+                <li><input type="checkbox"> <span>ICSE 2026 specimen papers solved</span></li>
+                <li><input type="checkbox"> <span>Formula sheets made for Math, Physics, Chemistry</span></li>
+                <li><input type="checkbox"> <span>Important diagrams practiced (Science, Geography)</span></li>
+                <li><input type="checkbox"> <span>Map work completed for Geography</span></li>
+                <li><input type="checkbox"> <span>Essay/letter formats revised (English)</span></li>
+                <li><input type="checkbox"> <span>All literature summaries and themes reviewed</span></li>
+                <li><input type="checkbox"> <span>Created short revision notes for all subjects</span></li>
+            </ul>
+
+            <h3 style="margin-top: 30px;">🎒 Day Before Exam</h3>
+            <ul class="checklist">
+                <li><input type="checkbox"> <span>Admit card/hall ticket collected</span></li>
+                <li><input type="checkbox"> <span>Exam center location checked</span></li>
+                <li><input type="checkbox"> <span>Stationery organized (pens, pencils, ruler, eraser, sharpener)</span></li>
+                <li><input type="checkbox"> <span>Geometry box ready (Math exam)</span></li>
+                <li><input type="checkbox"> <span>Water bottle prepared</span></li>
+                <li><input type="checkbox"> <span>Light revision of key topics only</span></li>
+                <li><input type="checkbox"> <span>Early dinner (by 8 PM)</span></li>
+                <li><input type="checkbox"> <span>Sleep by 10 PM (8 hours sleep crucial!)</span></li>
+                <li><input type="checkbox"> <span>No studying after 9 PM - relax your mind</span></li>
+            </ul>
+
+            <h3 style="margin-top: 30px;">📝 Exam Day Morning</h3>
+            <ul class="checklist">
+                <li><input type="checkbox"> <span>Wake up at 6:30 AM (don't rush!)</span></li>
+                <li><input type="checkbox"> <span>Light breakfast (avoid heavy food)</span></li>
+                <li><input type="checkbox"> <span>Quick 15-min revision of formulas/key points only</span></li>
+                <li><input type="checkbox"> <span>Carry admit card + school ID</span></li>
+                <li><input type="checkbox"> <span>Check all stationery items</span></li>
+                <li><input type="checkbox"> <span>Reach exam center by 8:30 AM (30 mins before)</span></li>
+                <li><input type="checkbox"> <span>Use washroom before entering hall</span></li>
+                <li><input type="checkbox"> <span>Deep breathing if feeling nervous</span></li>
+            </ul>
+
+            <h3 style="margin-top: 30px;">🎯 Week-wise Goals</h3>
+            <div class="study-tips">
+                <strong>Week 1 (Feb 4-9): Foundation</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Complete all syllabus revision</li>
+                    <li>Solve 2-3 past papers per subject</li>
+                    <li>Identify and work on weak areas</li>
+                </ul>
+            </div>
+
+            <div class="study-tips" style="margin-top: 15px;">
+                <strong>Week 2 (Feb 10-16): Intensive Practice</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Solve remaining past papers</li>
+                    <li>Focus heavily on weak subjects</li>
+                    <li>Create final revision notes</li>
+                    <li>Practice time management with full-length tests</li>
+                </ul>
+            </div>
+
+            <div class="study-tips" style="margin-top: 15px; background: #d4edda; border-left-color: #28a745;">
+                <strong>Day Before First Exam (Feb 16): Light Revision Only</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Review your short notes</li>
+                    <li>Practice a few easy questions for confidence</li>
+                    <li>Organize exam materials</li>
+                    <li>RELAX and sleep well!</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="motivation" style="margin-top: 20px;">
+            💯 Remember: You've got this! Consistency beats intensity. 13 days of focused work can make ALL the difference! 🚀
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Update countdown
+        function updateCountdown() {
+            const examDate = new Date('2026-02-17T11:00:00'); // Exam at 11 AM
+            const now = new Date();
+            const diff = examDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById('countdown').textContent = 'EXAM DAY! 🎯';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // Show different formats based on time remaining
+            if (days > 0) {
+                document.getElementById('countdown').textContent = 
+                    `${days} DAY${days !== 1 ? 'S' : ''}, ${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            } else if (hours > 0) {
+                document.getElementById('countdown').textContent = 
+                    `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} LEFT!`;
+            } else {
+                document.getElementById('countdown').textContent = 
+                    `${minutes}:${seconds.toString().padStart(2, '0')} MINUTES!`;
+            }
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000); // Update every second for live countdown
+
+        // Save checkbox state
+        document.querySelectorAll('.checklist input[type="checkbox"]').forEach(checkbox => {
+            const key = 'checkbox_' + checkbox.parentElement.textContent.trim();
+            checkbox.checked = localStorage.getItem(key) === 'true';
+            
+            checkbox.addEventListener('change', function() {
+                localStorage.setItem(key, this.checked);
+            });
+        });
+
+        // DARK MODE WITH CIRCLE ANIMATION
+        function toggleDarkMode() {
+            const button = document.getElementById('modeToggle');
+            const rect = button.getBoundingClientRect();
+            const isDark = document.body.classList.contains('dark-mode');
+            
+            // Create circle element
+            const circle = document.createElement('div');
+            circle.className = 'circle-transition';
+            
+            // Position at button center
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+            circle.style.left = x + 'px';
+            circle.style.top = y + 'px';
+            circle.style.width = '0px';
+            circle.style.height = '0px';
+            
+            // Calculate diagonal distance to cover whole screen
+            const maxDistance = Math.sqrt(
+                Math.pow(Math.max(x, window.innerWidth - x), 2) +
+                Math.pow(Math.max(y, window.innerHeight - y), 2)
+            ) * 2;
+            
+            document.body.appendChild(circle);
+            
+            // Animate expansion
+            setTimeout(() => {
+                circle.style.width = maxDistance + 'px';
+                circle.style.height = maxDistance + 'px';
+                circle.style.transform = `translate(-50%, -50%)`;
+                
+                // Toggle dark mode halfway through animation
+                setTimeout(() => {
+                    document.body.classList.toggle('dark-mode');
+                    const nowDark = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', nowDark);
+                    
+                    // Update button icon - show sun in dark mode, moon in light mode
+                    button.textContent = nowDark ? '☀️' : '🌙';
+                    
+                    // Update circle color for reverse animation
+                    if (nowDark) {
+                        circle.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)';
+                    }
+                }, 300);
+            }, 10);
+            
+            // Remove circle after animation
+            setTimeout(() => {
+                circle.remove();
+            }, 700);
+        }
+
+        // Load dark mode preference on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                const btn = document.getElementById('modeToggle');
+                if (btn) btn.textContent = '☀️';
+            }
+        });
+
+        // TO-DO LIST WITH PAPER SCORING FUNCTIONALITY
+        let items = JSON.parse(localStorage.getItem('studyItems')) || [];
+
+        function saveItems() {
+            localStorage.setItem('studyItems', JSON.stringify(items));
+        }
+
+        function updateInputPlaceholder() {
+            const type = document.getElementById('itemType').value;
+            const input = document.getElementById('newItemInput');
+            const scoreInputs = document.getElementById('scoreInputs');
+            
+            if (type === 'paper') {
+                input.placeholder = 'e.g., Math 2024 or Chemistry 2023';
+                scoreInputs.style.display = 'flex';
+            } else {
+                input.placeholder = 'e.g., Make formula sheet for Math';
+                scoreInputs.style.display = 'none';
+            }
+        }
+
+        function renderItems() {
+            const itemList = document.getElementById('todoList');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (items.length === 0) {
+                itemList.innerHTML = '';
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+                itemList.innerHTML = items.map((item, index) => {
+                    const isPaper = item.type === 'paper';
+                    const scoreDisplay = isPaper && item.score ? 
+                        `<span style="font-weight: bold; color: #ff6b6b; margin-left: 10px;">${item.score.obtained}/${item.score.total} (${Math.round((item.score.obtained/item.score.total)*100)}%)</span>` : '';
+                    
+                    return `
+                        <li class="todo-item ${item.completed ? 'completed' : ''}" 
+                            style="padding: 15px; margin: 10px 0; background: ${item.completed ? '#f0f0f0' : '#fff'}; 
+                                   border: 2px solid ${item.completed ? '#4caf50' : '#ff6b6b'}; border-radius: 10px; 
+                                   display: flex; align-items: center; gap: 15px; transition: all 0.3s ease;">
+                            <input type="checkbox" ${item.completed ? 'checked' : ''} 
+                                   onchange="toggleItem(${index})"
+                                   style="width: 24px; height: 24px; cursor: pointer;">
+                            <span style="flex: 1; font-size: 16px; ${item.completed ? 'text-decoration: line-through; color: #999;' : ''}">
+                                ${isPaper ? '📊' : '📋'} ${item.text}${scoreDisplay}
+                            </span>
+                            ${isPaper && !item.score && !item.completed ? `
+                                <button onclick="addScore(${index})" 
+                                        style="padding: 6px 12px; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); color: white; border: none; 
+                                               border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: bold;">
+                                    ➕ Add Score
+                                </button>
+                            ` : ''}
+                            <button onclick="event.stopPropagation(); deleteItem(${index})" 
+                                    style="padding: 8px 15px; background: linear-gradient(135deg, #f44336 0%, #e53935 100%); color: white; border: none; 
+                                           border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: bold;">
+                                🗑️
+                            </button>
+                        </li>
+                    `;
+                }).join('');
+            }
+            
+            updateProgress();
+            updatePaperStats();
+        }
+
+        function updateProgress() {
+            const completed = items.filter(i => i.completed).length;
+            const total = items.length;
+            const percentage = total === 0 ? 0 : Math.round((completed / total) * 100);
+            
+            document.getElementById('todoProgress').textContent = `${completed}/${total}`;
+            document.getElementById('progressFill').style.width = percentage + '%';
+        }
+
+        function updatePaperStats() {
+            const papers = items.filter(i => i.type === 'paper' && i.score);
+            
+            console.log('Updating paper stats. Papers with scores:', papers);
+            
+            const avgElement = document.getElementById('paperAverage');
+            const countElement = document.getElementById('paperCount');
+            
+            if (papers.length === 0) {
+                avgElement.textContent = '--%';
+                countElement.textContent = 'No papers scored yet';
+            } else {
+                const totalPercentage = papers.reduce((sum, p) => {
+                    return sum + (p.score.obtained / p.score.total) * 100;
+                }, 0);
+                const average = Math.round(totalPercentage / papers.length);
+                
+                console.log('Average calculated:', average, '%');
+                
+                // Add animation when updating
+                avgElement.style.transform = 'scale(1.2)';
+                avgElement.style.transition = 'transform 0.3s ease';
+                
+                avgElement.textContent = average + '%';
+                countElement.textContent = `${papers.length} paper${papers.length > 1 ? 's' : ''} completed`;
+                
+                // Reset scale after animation
+                setTimeout(() => {
+                    avgElement.style.transform = 'scale(1)';
+                }, 300);
+            }
+        }
+
+        function addItem() {
+            const input = document.getElementById('newItemInput');
+            const type = document.getElementById('itemType').value;
+            const text = input.value.trim();
+            
+            if (!text) return;
+            
+            const newItem = {
+                text: text,
+                type: type,
+                completed: false
+            };
+            
+            if (type === 'paper') {
+                const obtained = document.getElementById('scoreObtained').value;
+                const total = document.getElementById('scoreTotal').value;
+                
+                if (obtained && total) {
+                    newItem.score = {
+                        obtained: parseInt(obtained),
+                        total: parseInt(total)
+                    };
+                    newItem.completed = true; // Auto-complete if score is added
+                }
+            }
+            
+            items.push(newItem);
+            saveItems();
+            renderItems();
+            
+            // Clear inputs
+            input.value = '';
+            document.getElementById('scoreObtained').value = '';
+            document.getElementById('scoreTotal').value = '80';
+            
+            // Show success feedback
+            input.placeholder = '✅ Item added!';
+            setTimeout(() => updateInputPlaceholder(), 2000);
+        }
+
+        function addScore(index) {
+            const obtained = prompt('Enter your score (e.g., 70):');
+            const total = prompt('Enter total marks (e.g., 80):', '80');
+            
+            if (obtained && total) {
+                const obtainedNum = parseInt(obtained);
+                const totalNum = parseInt(total);
+                
+                if (isNaN(obtainedNum) || isNaN(totalNum) || obtainedNum < 0 || totalNum <= 0) {
+                    alert('❌ Please enter valid numbers!');
+                    return;
+                }
+                
+                if (obtainedNum > totalNum) {
+                    alert('❌ Score cannot be greater than total marks!');
+                    return;
+                }
+                
+                items[index].score = {
+                    obtained: obtainedNum,
+                    total: totalNum
+                };
+                items[index].completed = true;
+                
+                console.log('Score added to item:', items[index]);
+                
+                saveItems();
+                renderItems();
+                
+                const percentage = Math.round((obtainedNum / totalNum) * 100);
+                alert(`✅ Score saved: ${obtainedNum}/${totalNum} (${percentage}%)!\nDashboard updated!`);
+            }
+        }
+
+        function toggleItem(index) {
+            items[index].completed = !items[index].completed;
+            saveItems();
+            renderItems();
+        }
+
+        function deleteItem(index) {
+            if (confirm('Delete this item?')) {
+                items.splice(index, 1);
+                saveItems();
+                renderItems();
+            }
+        }
+
+        function addTodaysTasks() {
+            const today = new Date();
+            const examDate = new Date('2026-02-17');
+            const daysUntilExam = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24));
+            
+            // Define task schedule based on days remaining
+            let todayItems = [];
+            
+            if (daysUntilExam >= 11) {
+                // Days 11-10: Cover all subjects once
+                const day = 12 - daysUntilExam; // Day 1, 2, etc.
+                if (day === 1) {
+                    todayItems = [
+                        { text: 'Math 2024 full paper', type: 'paper', completed: false },
+                        { text: 'English Language 2024 paper', type: 'paper', completed: false },
+                        { text: 'Chemistry 2024 paper', type: 'paper', completed: false },
+                        { text: 'Review all 3 papers and note weak areas', type: 'task', completed: false }
+                    ];
+                } else if (day === 2) {
+                    todayItems = [
+                        { text: 'English Lit 2024 paper', type: 'paper', completed: false },
+                        { text: 'History 2024 full paper', type: 'paper', completed: false },
+                        { text: 'Biology 2024 full paper', type: 'paper', completed: false },
+                        { text: 'Make formula sheet for Math', type: 'task', completed: false }
+                    ];
+                }
+            } else if (daysUntilExam >= 7 && daysUntilExam < 11) {
+                // Days 10-7: Repeat weak subjects
+                todayItems = [
+                    { text: 'Math 2023 full paper (2nd attempt)', type: 'paper', completed: false },
+                    { text: 'Chemistry 2023 paper', type: 'paper', completed: false },
+                    { text: 'History 2023 paper', type: 'paper', completed: false },
+                    { text: 'Review and make notes on mistakes', type: 'task', completed: false },
+                    { text: 'Practice diagram drawing (Science/Geography)', type: 'task', completed: false }
+                ];
+            } else if (daysUntilExam >= 4 && daysUntilExam < 7) {
+                // Days 6-4: Intensive practice on weakest subjects
+                todayItems = [
+                    { text: 'Math 2022 full paper', type: 'paper', completed: false },
+                    { text: 'English Language 2023 paper', type: 'paper', completed: false },
+                    { text: 'Focus on weakest chapter from each subject', type: 'task', completed: false },
+                    { text: 'Revise all formula sheets', type: 'task', completed: false }
+                ];
+            } else if (daysUntilExam >= 2 && daysUntilExam < 4) {
+                // Days 3-2: Final revision + specimen papers
+                todayItems = [
+                    { text: 'ICSE 2026 Specimen Paper - English Language', type: 'paper', completed: false },
+                    { text: 'ICSE 2026 Specimen Paper - Math', type: 'paper', completed: false },
+                    { text: 'Quick revision of all short notes', type: 'task', completed: false },
+                    { text: 'Practice important diagrams', type: 'task', completed: false }
+                ];
+            } else if (daysUntilExam === 1) {
+                // Day before exam: Light revision only
+                todayItems = [
+                    { text: 'Light revision of English Language notes', type: 'task', completed: false },
+                    { text: 'Review essay formats and letter writing', type: 'task', completed: false },
+                    { text: 'Organize stationery and exam materials', type: 'task', completed: false },
+                    { text: 'Early dinner by 8 PM', type: 'task', completed: false },
+                    { text: 'Sleep by 10 PM (MANDATORY!)', type: 'task', completed: false }
+                ];
+            } else {
+                // Exam day or after
+                todayItems = [
+                    { text: 'Good luck! You\'ve got this! 🎯', type: 'task', completed: false }
+                ];
+            }
+            
+            // Add items if they don't already exist
+            todayItems.forEach(item => {
+                if (!items.some(i => i.text === item.text)) {
+                    items.push(item);
+                }
+            });
+            
+            saveItems();
+            renderItems();
+            
+            if (todayItems.length > 0) {
+                alert(`✅ Added ${todayItems.length} tasks for today (${daysUntilExam} days until exam)!`);
+            } else {
+                alert('No specific tasks for today. Keep revising!');
+            }
+        }
+        
+        // Update the quick add description to show what will be added
+        function updateQuickAddDescription() {
+            const today = new Date();
+            const examDate = new Date('2026-02-17');
+            const daysUntilExam = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24));
+            const descElement = document.getElementById('quickAddDescription');
+            
+            if (!descElement) return;
+            
+            let description = '';
+            if (daysUntilExam >= 11) {
+                description = '📚 Phase 1: Cover all subjects (3-4 papers per day)';
+            } else if (daysUntilExam >= 7) {
+                description = '🔄 Phase 2: Repeat weak subjects (2023 papers)';
+            } else if (daysUntilExam >= 4) {
+                description = '💪 Phase 3: Intensive practice on weakest topics';
+            } else if (daysUntilExam >= 2) {
+                description = '📖 Phase 4: Final revision + specimen papers';
+            } else if (daysUntilExam === 1) {
+                description = '😌 Day Before: Light revision + early sleep!';
+            } else {
+                description = '🎯 Exam Day - You\'ve got this!';
+            }
+            
+            descElement.textContent = description;
+        }
+        
+        // View all scored papers
+        function viewAllScores() {
+            const papers = items.filter(i => i.type === 'paper' && i.score);
+            
+            if (papers.length === 0) {
+                alert('📊 No papers scored yet!\n\nTo add a score:\n1. Select "Practice Paper" type\n2. Enter paper name (e.g., "Math 2024")\n3. Enter your score (e.g., 70/80)\n\nOR click "Add Score" button on existing papers.');
+                return;
+            }
+            
+            let message = '📊 ALL YOUR SCORES:\n\n';
+            
+            papers.forEach((paper, index) => {
+                const percentage = Math.round((paper.score.obtained / paper.score.total) * 100);
+                message += `${index + 1}. ${paper.text}\n   Score: ${paper.score.obtained}/${paper.score.total} (${percentage}%)\n\n`;
+            });
+            
+            const totalPercentage = papers.reduce((sum, p) => {
+                return sum + (p.score.obtained / p.score.total) * 100;
+            }, 0);
+            const average = Math.round(totalPercentage / papers.length);
+            
+            message += `━━━━━━━━━━━━━━━━━━\nOVERALL AVERAGE: ${average}%\nTOTAL PAPERS: ${papers.length}`;
+            
+            alert(message);
+        }
+        
+        // EXPORT DATA - Save all your progress to a file
+        function exportData() {
+            const data = {
+                items: items,
+                exportDate: new Date().toISOString(),
+                version: '1.0'
+            };
+            
+            const dataStr = JSON.stringify(data, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `icse-exam-prep-backup-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('✅ Data exported successfully!\n\nSave this file safely. You can import it later to restore all your tasks and scores, even after HTML updates!');
+        }
+        
+        // IMPORT DATA - Restore your progress from a file
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (!data.items || !Array.isArray(data.items)) {
+                        alert('❌ Invalid backup file format!');
+                        return;
+                    }
+                    
+                    // Ask for confirmation
+                    const confirm = window.confirm(
+                        `📤 Import Data?\n\n` +
+                        `This will restore:\n` +
+                        `- ${data.items.length} items\n` +
+                        `- Backup date: ${new Date(data.exportDate).toLocaleDateString()}\n\n` +
+                        `Current data will be REPLACED. Continue?`
+                    );
+                    
+                    if (confirm) {
+                        items = data.items;
+                        saveItems();
+                        renderItems();
+                        alert('✅ Data imported successfully!\n\nAll your tasks and scores have been restored!');
+                    }
+                } catch (error) {
+                    alert('❌ Error reading backup file!\n\nPlease make sure you selected a valid backup file.');
+                    console.error('Import error:', error);
+                }
+            };
+            reader.readAsText(file);
+            
+            // Reset file input so same file can be selected again
+            event.target.value = '';
+        }
+        
+        // CLEAR ALL DATA
+        function clearAllData() {
+            const confirm = window.confirm(
+                '⚠️ WARNING: Clear All Data?\n\n' +
+                'This will permanently delete:\n' +
+                '- All tasks\n' +
+                '- All paper scores\n' +
+                '- All progress\n\n' +
+                'Make sure you\'ve exported a backup first!\n\n' +
+                'Are you SURE you want to continue?'
+            );
+            
+            if (confirm) {
+                const doubleConfirm = window.confirm(
+                    '🚨 FINAL WARNING!\n\n' +
+                    'This action CANNOT be undone.\n\n' +
+                    'Really delete everything?'
+                );
+                
+                if (doubleConfirm) {
+                    items = [];
+                    saveItems();
+                    renderItems();
+                    alert('✅ All data cleared.\n\nYou can import a backup file to restore your data.');
+                }
+            }
+        }
+
+        // Initialize on page load
+        renderItems();
+        updateInputPlaceholder();
+        updateQuickAddDescription();
+    </script>
+</body>
+</html>
