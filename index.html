@@ -1364,6 +1364,26 @@
                     <p style="margin-top: 10px;">No items yet. Add your first item above!</p>
                 </div>
             </div>
+            
+            <div class="study-tips" style="margin-top: 20px; background: #e8f5e9; border-left-color: #4caf50;">
+                <h3>💾 Backup Your Data</h3>
+                <p style="margin-top: 10px; font-size: 14px;">Save your progress and restore it anytime - even after updates!</p>
+                <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                    <button onclick="exportData()" 
+                            style="padding: 10px 20px; background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.2s ease;">
+                        📥 Export Data
+                    </button>
+                    <button onclick="document.getElementById('importFile').click()" 
+                            style="padding: 10px 20px; background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.2s ease;">
+                        📤 Import Data
+                    </button>
+                    <button onclick="clearAllData()" 
+                            style="padding: 10px 20px; background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.2s ease;">
+                        🗑️ Clear All
+                    </button>
+                </div>
+                <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(event)">
+            </div>
 
             <div class="study-tips" style="margin-top: 20px; background: #fff3cd; border-left-color: #ffc107;">
                 <h3>💡 Quick Add - Today's Tasks</h3>
