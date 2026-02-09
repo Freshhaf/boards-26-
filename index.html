@@ -212,6 +212,11 @@
             background: #555 !important;
         }
         
+        /* Category headers in dark mode */
+        .dark-mode #todoList div[style*="linear-gradient"] {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%) !important;
+        }
+        
         .dark-mode input,
         .dark-mode select {
             background: #3a3a3a !important;
@@ -1355,7 +1360,12 @@
             </div>
 
             <div class="input-container" style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                <h3 style="margin-bottom: 15px;">📋 My Items</h3>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3>📋 My Items</h3>
+                    <div style="font-size: 12px; color: #666;">
+                        ✨ Auto-sorted: Specimen → 2025 → 2024 → 2023 → Tasks
+                    </div>
+                </div>
                 <ul id="todoList" style="list-style: none; padding: 0;">
                     <!-- Items will be added here dynamically -->
                 </ul>
@@ -1364,7 +1374,7 @@
                     <p style="margin-top: 10px;">No items yet. Add your first item above!</p>
                 </div>
             </div>
-            
+
             <div class="study-tips" style="margin-top: 20px; background: #e8f5e9; border-left-color: #4caf50;">
                 <h3>💾 Backup Your Data</h3>
                 <p style="margin-top: 10px; font-size: 14px;">Save your progress and restore it anytime - even after updates!</p>
@@ -1711,17 +1721,51 @@
             const itemList = document.getElementById('todoList');
             const emptyState = document.getElementById('emptyState');
             
+            // Auto-sort items before rendering
+            sortItems();
+            
             if (items.length === 0) {
                 itemList.innerHTML = '';
                 emptyState.style.display = 'block';
             } else {
                 emptyState.style.display = 'none';
-                itemList.innerHTML = items.map((item, index) => {
+                
+                // Group items and add headers
+                let html = '';
+                let currentCategory = '';
+                
+                items.forEach((item, index) => {
                     const isPaper = item.type === 'paper';
+                    const itemText = item.text.toLowerCase();
+                    
+                    // Determine category
+                    let category = '';
+                    if (isPaper) {
+                        if (itemText.includes('2026') || itemText.includes('specimen')) category = '🏆 2026 Specimen Papers';
+                        else if (itemText.includes('2025')) category = '⭐ 2025 Papers';
+                        else if (itemText.includes('2024')) category = '✨ 2024 Papers';
+                        else if (itemText.includes('2023')) category = '💫 2023 Papers';
+                        else if (itemText.includes('2022') || itemText.includes('2021') || itemText.includes('2020')) category = '📝 Older Papers';
+                        else category = '📄 Other Papers';
+                    } else {
+                        category = '✅ Tasks';
+                    }
+                    
+                    // Add category header if changed
+                    if (category !== currentCategory) {
+                        currentCategory = category;
+                        html += `
+                            <div style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%); color: white; 
+                                        padding: 10px 15px; margin: 20px 0 10px 0; border-radius: 8px; font-weight: bold; font-size: 14px;">
+                                ${category}
+                            </div>
+                        `;
+                    }
+                    
                     const scoreDisplay = isPaper && item.score ? 
                         `<span style="font-weight: bold; color: #ff6b6b; margin-left: 10px;">${item.score.obtained}/${item.score.total} (${Math.round((item.score.obtained/item.score.total)*100)}%)</span>` : '';
                     
-                    return `
+                    html += `
                         <li class="todo-item ${item.completed ? 'completed' : ''}" 
                             style="padding: 15px; margin: 10px 0; background: ${item.completed ? '#f0f0f0' : '#fff'}; 
                                    border: 2px solid ${item.completed ? '#4caf50' : '#ff6b6b'}; border-radius: 10px; 
@@ -1746,7 +1790,9 @@
                             </button>
                         </li>
                     `;
-                }).join('');
+                });
+                
+                itemList.innerHTML = html;
             }
             
             updateProgress();
@@ -1926,6 +1972,151 @@
             });
             msg += `━━━━━━━━━━\nTotal: ${r.totalPoints}/${r.maxPoints}\n\n💡 TIP: 2026 Specimen = 50 pts!`;
             alert(msg);
+        }
+
+        // EXPORT DATA - Save all your progress to a file
+        function exportData() {
+            const data = {
+                items: items,
+                exportDate: new Date().toISOString(),
+                version: '1.0'
+            };
+            
+            const dataStr = JSON.stringify(data, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `icse-exam-prep-backup-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('✅ Data exported successfully!\n\nSave this file safely. You can import it later to restore all your tasks and scores!');
+        }
+        
+        // IMPORT DATA - Restore your progress from a file
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (!data.items || !Array.isArray(data.items)) {
+                        alert('❌ Invalid backup file format!');
+                        return;
+                    }
+                    
+                    const confirmImport = window.confirm(
+                        `📤 Import Data?\n\n` +
+                        `This will restore:\n` +
+                        `- ${data.items.length} items\n` +
+                        `- Backup date: ${new Date(data.exportDate).toLocaleDateString()}\n\n` +
+                        `Current data will be REPLACED. Continue?`
+                    );
+                    
+                    if (confirmImport) {
+                        items = data.items;
+                        saveItems();
+                        renderItems();
+                        alert('✅ Data imported successfully!\n\nAll your tasks and scores have been restored!');
+                    }
+                } catch (error) {
+                    alert('❌ Error reading backup file!\n\nPlease make sure you selected a valid backup file.');
+                    console.error('Import error:', error);
+                }
+            };
+            reader.readAsText(file);
+            
+            // Reset file input
+            event.target.value = '';
+        }
+        
+        // CLEAR ALL DATA
+        function clearAllData() {
+            const confirmClear = window.confirm(
+                '⚠️ WARNING: Clear All Data?\n\n' +
+                'This will permanently delete:\n' +
+                '- All tasks\n' +
+                '- All paper scores\n' +
+                '- All progress\n\n' +
+                'Make sure you\'ve exported a backup first!\n\n' +
+                'Are you SURE you want to continue?'
+            );
+            
+            if (confirmClear) {
+                const doubleConfirm = window.confirm(
+                    '🚨 FINAL WARNING!\n\n' +
+                    'This action CANNOT be undone.\n\n' +
+                    'Really delete everything?'
+                );
+                
+                if (doubleConfirm) {
+                    items = [];
+                    saveItems();
+                    renderItems();
+                    alert('✅ All data cleared.\n\nYou can import a backup file to restore your data.');
+                }
+            }
+        }
+
+        // AUTO-SORT ITEMS by year priority
+        function sortItems() {
+            // Separate papers and tasks
+            const papers = items.filter(i => i.type === 'paper');
+            const tasks = items.filter(i => i.type === 'task');
+            
+            // Sort papers by year priority
+            papers.sort((a, b) => {
+                const aText = a.text.toLowerCase();
+                const bText = b.text.toLowerCase();
+                
+                // Determine year/priority for item a
+                let aPriority = 5; // default
+                if (aText.includes('2026') || aText.includes('specimen')) aPriority = 1;
+                else if (aText.includes('2025')) aPriority = 2;
+                else if (aText.includes('2024')) aPriority = 3;
+                else if (aText.includes('2023')) aPriority = 4;
+                else if (aText.includes('2022') || aText.includes('2021') || aText.includes('2020')) aPriority = 5;
+                
+                // Determine year/priority for item b
+                let bPriority = 5;
+                if (bText.includes('2026') || bText.includes('specimen')) bPriority = 1;
+                else if (bText.includes('2025')) bPriority = 2;
+                else if (bText.includes('2024')) bPriority = 3;
+                else if (bText.includes('2023')) bPriority = 4;
+                else if (bText.includes('2022') || bText.includes('2021') || bText.includes('2020')) bPriority = 5;
+                
+                // Sort by priority, then by completion status (incomplete first)
+                if (aPriority !== bPriority) {
+                    return aPriority - bPriority;
+                }
+                
+                // Within same priority, show incomplete first
+                if (a.completed !== b.completed) {
+                    return a.completed ? 1 : -1;
+                }
+                
+                // Otherwise maintain original order (alphabetical)
+                return a.text.localeCompare(b.text);
+            });
+            
+            // Tasks: incomplete first, then completed
+            tasks.sort((a, b) => {
+                if (a.completed !== b.completed) {
+                    return a.completed ? 1 : -1;
+                }
+                return 0;
+            });
+            
+            // Combine: papers first, then tasks
+            items = [...papers, ...tasks];
+            saveItems();
         }
 
         function addItem() {
